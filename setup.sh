@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 CWD="$(dirname "${0}")"
-# Copy makepkg-mingw configuration
+# Create prefix directory
+mkdir /tek-x86_64
+# Copy msystem and makepkg-mingw configuration
+cp "${CWD}/TEK-X86_64" /etc/msystem.d/
 cp "${CWD}/tek-x86_64.conf" /etc/makepkg_mingw.d/
 # Add TEK to the case that sets environment variables for MinGW systems
 sed -i 's/MINGW\*|CLANG\*|UCRT\*/MINGW\*|CLANG\*|UCRT\*|TEK\*/' /etc/profile
